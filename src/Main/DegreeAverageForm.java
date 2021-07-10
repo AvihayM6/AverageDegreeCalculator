@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class DegreeAverageForm extends JFrame{
 
@@ -33,7 +35,9 @@ public class DegreeAverageForm extends JFrame{
                 else {
                     double num = eval(scoreAndNzSumNum);
                     ans = num / Double.parseDouble(numOfNzNum);
-                    degree.setText(ans + "");
+                    BigDecimal bd = new BigDecimal(ans);
+                    BigDecimal res = bd.setScale(2, RoundingMode.HALF_UP);
+                    degree.setText(res + "");
                 }
             }
         });
